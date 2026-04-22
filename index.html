@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<aside class="sidebar">
+			<div class="sidebar-header">EXPLORER</div>
+			<div class="folder">
+				<div class="folder-name">PORTFOLIO</div>
+				<ul class="file-list">
+					<li class="file active" data-target="profile">👤 profile.md</li>
+					<li class="file-group">src
+						<ul>
+							<li class="file" data-target="dy_engine">dy_engine</li>
+						</ul>
+					</li>
+					<li class="file" data-target="side_projects">side-proj
+						<ul>
+							<li>plotTree</li>
+							<li>suPlaylist</li>
+						</ul>
+					</li>
+					<li class="file" data-target="archivements">archivements
+						<ul>
+							<li>2017_WIN32_DIRECT2D.mp4</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</aside>
+
+		<main class="editor">
+			<div class="tabs">
+				<div class="tab active" data-target="profile">👤 profile.md</div>
+				<div class="tab" data-target="dy_engine">dy_engine</div>
+				<div class="tab" data-target="side_projects">side_projects</div>
+				<div class="tab" data-target="archivements">archivements</div>
+			</div>
+			
+			<div class="content-area">
+				<div class="line-numbers">
+					<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+					<span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+				</div>
+
+				<div class="code-view active" id="content-profile" data-md-file="profile.md"></div>
+
+				<div class="code-view" id="content-dy_engine" data-md-file="dy_engine.md"></div>
+
+				<div class="code-view" id="content-side_projects" data-md-file="side_projects.md"></div>
+
+				<div class="code-view" id="content-archivements" data-md-file="archivements.md"></div>
+			</div>
+		</main>
+	</div>
+
+<script>
+const files = document.querySelectorAll('.file');
+const tabs = document.querySelectorAll('.tab');
+const contents = document.querySelectorAll('.code-view');
+
+function switchTab(targetId) {
+	files.forEach(f => f.classList.remove('active'));
+	tabs.forEach(t => t.classList.remove('active'));
+	contents.forEach(c => {
+		c.classList.remove('active');
+		c.style.display = 'none';
+	});
+
+	document.querySelectorAll(`[data-target="${targetId}"]`).forEach(el => {
+		el.classList.add('active');
+	});
+
+	const targetContent = document.getElementById(`content-${targetId}`);
+	if (targetContent) {
+		targetContent.style.display = 'block';
+		targetContent.classList.add('active');
+
+		const isLoaded = targetContent.getAttribute('data-loaded');
+		if (isLoaded !== 'true') {
+			const mdPath = `./md/${targetId}.md`;
+			fetch(mdPath)
+				.then(response => {
+					if (!response.ok) throw new Error();
+					return response.text();
+				})
+				.then(text => {
+					targetContent.innerHTML = marked.parse(text);
+					targetContent.setAttribute('data-loaded', 'true');
+				})
+				.catch(() => {
+					targetContent.innerHTML = `<h1>Error: ${mdPath} not found</h1>`;
+				});
+		}
+	}
+}
+
+files.forEach(file => {
+	file.addEventListener('click', function() {
+		const target = this.getAttribute('data-target');
+		if (target) switchTab(target);
+	});
+});
+
+tabs.forEach(tab => {
+	tab.addEventListener('click', function() {
+		const target = this.getAttribute('data-target');
+		if (target) switchTab(target);
+	});
+});
+
+window.onload = () => {
+	switchTab('profile');
+};
+</script>
+</body>
+</html>
