@@ -11,13 +11,13 @@
 - **Language:** HTML, CSS, JS
 - **Link:** [👉 Github Repository 이동하기](https://github.com/suhanjin17/plotTree)
 
-<br>
-
 ---
 
 ## 🎵 suPlaylist
 
 >> 
 
+- **동기:**
+    - sdf
 - **Language:**
 - **Link:** [👉 Github Repository 이동하기](https://github.com/suhanjin17/suPlaylist)

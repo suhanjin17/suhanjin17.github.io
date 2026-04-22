@@ -4,16 +4,17 @@
 
 ## 2017_WIN32_DIRECT2D.mp4
 
-> N년 전, 학원에서 만들었던 초기 포트폴리오입니다.
-
-<img src="./res/Untitled.png">
-
-<video width="100%" controls>
+<video controls>
   <source src="./res/2017_WIN32_DIRECT2D.mp4" type="video/mp4">
   브라우저가 비디오 태그를 지원하지 않습니다.
 </video>
 
-<video width="100%" controls>
-  <source src="./res/2018_Unity.mp4" type="video/mp4">
+## 2018_Unity_Photon.mp4
+
+<video controls>
+  <source src="./res/2018_Unity_Photon.mp4" type="video/mp4">
   브라우저가 비디오 태그를 지원하지 않습니다.
 </video>
+
+##
+<img src="./res/Untitled.png">
