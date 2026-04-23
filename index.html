@@ -45,18 +45,14 @@
 			</div>
 			
 			<div class="content-area">
-				<div class="line-numbers">
-					<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-					<span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-				</div>
 
-				<div class="code-view active" id="content-profile" data-md-file="profile.md"></div>
+				<div class="code_view active" id="content-profile" data-md-file="profile.md"></div>
 
-				<div class="code-view" id="content-dy_engine" data-md-file="dy_engine.md"></div>
+				<div class="code_view" id="content-dy_engine" data-md-file="dy_engine.md"></div>
 
-				<div class="code-view" id="content-side_projects" data-md-file="side_projects.md"></div>
+				<div class="code_view" id="content-side_projects" data-md-file="side_projects.md"></div>
 
-				<div class="code-view" id="content-archivements" data-md-file="archivements.md"></div>
+				<div class="code_view" id="content-archivements" data-md-file="archivements.md"></div>
 			</div>
 		</main>
 	</div>
@@ -64,7 +60,7 @@
 <script>
 const files = document.querySelectorAll('.file');
 const tabs = document.querySelectorAll('.tab');
-const contents = document.querySelectorAll('.code-view');
+const contents = document.querySelectorAll('.code_view');
 
 function switchTab(targetId) {
 	files.forEach(f => f.classList.remove('active'));
